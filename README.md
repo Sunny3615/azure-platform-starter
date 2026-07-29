@@ -11,21 +11,31 @@ The Azure infrastructure, including the App Service Plan, Web App, staging slot 
 ## Tech Stack
 
 - Node.js
-- GitHub Actions
+- Markdown
 - Terraform
 - Azure App Service
-- Azure Deployment Slots
-- Application Insights
-- Markdown
+- GitHub Actions
+- Docker
+- Azure Container Registry
+- Kubernetes and Helm
 
-Version 1
+## Version 1 - ongoing
 Azure Web App deployment
 
-Version 2
+The first version focuses on deploying the application to Azure Web App.
+
+Azure infrastructure is provisioned using Terraform, including:
+
+- Azure Resource Group
+- App Service Plan
+
+The application is deployed to a publicly accessible Azure endpoint.
+
+## Version 2
 Dockerize the application
 
-Version 3
+## Version 3
 Push image to Azure Container Registry
 
-Version 4
+## Version 4
 Deploy to AKS with Helm
