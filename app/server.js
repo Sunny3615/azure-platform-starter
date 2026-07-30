@@ -2,7 +2,7 @@ const http = require("node:http");
 
 const homeHandler = require("./routes/index");
 const docsHandler = require("./routes/docs");
-
+const port = process.env.PORT || 3000;
 const server = http.createServer(async (request, response) => {
 
   if (request.url === "/") {
@@ -20,6 +20,7 @@ const server = http.createServer(async (request, response) => {
 
 });
 
-server.listen(3000, () => {
-  console.log("Server running at http://localhost:3000");
+server.listen(port, () => {
+  // console.log("Server running at http://localhost:3000");
+  console.log(`Server is listening on port ${port}`);
 });

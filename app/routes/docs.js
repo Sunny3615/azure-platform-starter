@@ -12,7 +12,7 @@ module.exports = async function docsHandler(request, response) {
     const markdownPath = path.join(
       __dirname,
       "..",
-      "..",
+      // "..",
       `${request.url}.md`
     );
 

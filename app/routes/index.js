@@ -5,7 +5,6 @@ const docs = require("./docs");
 const docsPath = path.join(
   __dirname,
   "..",
-  "..",
   "docs"
 );
 
