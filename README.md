@@ -19,19 +19,16 @@ The Azure infrastructure, including the App Service Plan, Web App, staging slot 
 - Azure Container Registry
 - Kubernetes and Helm
 
-## Version 1 - ongoing
-Azure Web App deployment
+## ✅ Version 1
 
-The first version focuses on deploying the application to Azure Web App.
+Completed
 
-Azure infrastructure is provisioned using Terraform, including:
+- Node.js documentation platform
+- Terraform infrastructure
+- Azure App Service deployment
+- Live Azure website
 
-- Azure Resource Group
-- App Service Plan
-
-The application is deployed to a publicly accessible Azure endpoint.
-
-## Version 2
+## Version 2 - ongogin
 Dockerize the application
 
 ## Version 3

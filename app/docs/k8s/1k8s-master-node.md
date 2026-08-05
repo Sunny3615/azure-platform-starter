@@ -1,1 +1,0 @@
-this is a test file for k8s folder.

@@ -32,4 +32,9 @@ resource "azurerm_linux_web_app" "webapp" {
       node_version = "24-lts"
     }
   }
+  app_settings = {
+    # Tell the Azure deployment engine to build the application during deployment.
+    # upload zip -- npm install -- npm start
+    SCM_DO_BUILD_DURING_DEPLOYMENT = "true"
+  }
 }

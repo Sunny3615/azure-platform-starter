@@ -77,12 +77,24 @@ module.exports = async function homeHandler(request, response) {
             name="viewport"
             content="width=device-width, initial-scale=1"
           />
-          <title>Documents</title>
+          <title>Cloud Engineering Notes</title>
         </head>
 
         <body>
-          <h1>Documents</h1>
+          <h1>Cloud Engineering Notes</h1>
+          <p>
+            Welcome to my cloud learning documentation site.
+            This project is built with Node.js and deployed to Microsoft Azure using Terraform as Infrastructure as Code (IaC).
+            My goal is to document the technologies I learn, the challenges I encounter, and the solutions I discover throughout my cloud and DevOps journey.
+            </p>
 
+            <p>
+            The project will continue to evolve with features such as automated CI/CD pipelines in the future.
+            The complete source code, including the Node.js application, Terraform configuration, and future deployment pipeline, is available on
+            <a href="https://github.com/Sunny3615/azure-platform-starter" target="_blank">
+            GitHub
+            </a>.
+            </p>
           ${documentsHtml}
         </body>
       </html>
