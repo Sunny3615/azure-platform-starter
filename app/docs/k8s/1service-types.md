@@ -26,7 +26,6 @@ To understand this, I first reviewed the four common Kubernetes Service types.
 | **LoadBalancer** | Expose a Service through an external load balancer    | External → Load Balancer → Service → Pod |
 | **ExternalName** | Map a Kubernetes Service name to an external DNS name | Pod → External Service                   |
 
----
 
 # ClusterIP
 
@@ -205,8 +204,6 @@ port       → Service
 targetPort → Pod / application
 ```
 
----
-
 ## What exactly does the client access?
 
 With a ClusterIP Service, a client inside the cluster can access:
@@ -238,8 +235,6 @@ Backend Pod
 ```
 
 This is one of the major differences between ClusterIP and NodePort.
-
----
 
 ## What if the Pod is not running on the Node that receives the traffic?
 
@@ -292,7 +287,6 @@ Therefore:
 
 > The Node that receives NodePort traffic does not necessarily have to be the Node running the destination Pod.
 
----
 
 ## Why does NodePort also have a ClusterIP?
 
@@ -339,8 +333,6 @@ ClusterIP
    ↑
 NodePort adds external access through NodeIP:NodePort
 ```
-
----
 
 # LoadBalancer
 
@@ -431,8 +423,6 @@ Kubernetes
 
 LoadBalancer is commonly used when an application needs to be directly accessible from outside the Kubernetes cluster, especially in cloud environments.
 
----
-
 # ExternalName
 
 ## Definition
@@ -491,8 +481,6 @@ Unlike the other Service types, an ExternalName Service does not proxy traffic t
 ## Use case
 
 ExternalName is useful when applications inside Kubernetes need to access an external service while using a Kubernetes-style Service name.
-
----
 
 # Summary
 

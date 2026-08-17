@@ -28,8 +28,57 @@ Completed
 - Azure App Service deployment
 - Live Azure website
 
-## Version 2 - ongogin
-Dockerize the application
+## Version 2 - Ongoing
+
+### CI/CD with GitHub Actions
+
+The goal of Version 2 is to automate application validation and deployment using GitHub Actions.
+
+### CI
+
+When code is pushed to GitHub, a CI workflow will run automatically.
+
+The pipeline will:
+
+- Install Node.js dependencies
+- Run Node.js checks and tests
+- Validate Markdown files
+- Run spelling checks
+- Package the application as a ZIP artifact
+
+If any validation step fails, the pipeline should stop and the application should not be deployed.
+
+### CD
+
+The deployment workflow will only run after the CI pipeline has completed successfully.
+
+The pipeline will:
+
+- Retrieve the application artifact produced by CI
+- Authenticate with Azure
+- Deploy the application to Azure App Service
+- Verify that the deployment completes successfully
+
+### Target Workflow
+
+Code Change
+    ↓
+Git Push
+    ↓
+GitHub Actions
+    ↓
+CI
+├── Install dependencies
+├── Node.js checks
+├── Markdown validation
+├── Spelling checks
+└── Package application
+    ↓
+CI Passed
+    ↓
+CD
+    ↓
+Deploy to Azure App Service
 
 ## Version 3
 Push image to Azure Container Registry

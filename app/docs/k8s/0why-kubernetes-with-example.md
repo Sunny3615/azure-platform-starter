@@ -40,8 +40,6 @@ PostgreSQL
 
 At this point, Kubernetes has not appeared yet. This is simply the architecture of our application.
 
----
-
 # Containerizing the Application
 
 In a real project, the frontend and backend are usually developed separately. They have different source code, dependencies, and runtime environments.
@@ -376,7 +374,6 @@ An important point is that the Frontend Service can **also be a ClusterIP Servic
 
 We do not necessarily need to expose every application directly through NodePort or LoadBalancer.
 
----
 
 # Ingress
 
@@ -468,7 +465,6 @@ Ingress answers:
 
 > **Now that the HTTP request has reached the cluster, which Service should handle it?**
 
----
 
 # Putting Everything Together
 
@@ -533,8 +529,6 @@ PostgreSQL
    ↓
 Persistent Storage
 ```
-
----
 
 # What problem does each technology solve?
 
