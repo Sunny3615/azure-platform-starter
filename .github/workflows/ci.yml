@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: app
+
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
@@ -17,8 +21,11 @@ jobs:
         with:
           node-version: '24'
 
-      - name: install dependencies
-        run: npm install
+      - name: install dependencies (clean install)
+        run: npm ci
       
-      - name: check application can start
+      - name: check syntax
         run: node --check server.js
+      
+      - name: run Markdown lint
+        run: npm run lint:md
