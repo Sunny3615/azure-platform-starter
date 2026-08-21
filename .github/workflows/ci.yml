@@ -28,3 +28,13 @@ jobs:
       
       - name: run Markdown lint
         run: npm run lint:md
+
+      - name: package application
+        working-directory: app
+        run: zip -r ../app.zip .
+
+      - name: upload application artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: application
+          path: app.zip
