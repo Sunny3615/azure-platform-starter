@@ -1,12 +1,14 @@
-# What confused me
+# Why Kubernetes?
+
+## What confused me
 
 I wanted to use a real-world example to help me understand why we need Kubernetes, what problems Kubernetes solves, and how some of its basic concepts work together.
 
 Instead of learning concepts such as Pods, Deployments, Services, and Ingress separately, I wanted to understand what problem each of them solves in a real application.
 
-# What did I learn?
+## What did I learn?
 
-## A Real-World Example
+### A Real-World Example
 
 Suppose I want to build an online jewellery shop where customers can browse products and place orders, while the shop owner can receive and manage order information.
 
@@ -40,7 +42,7 @@ PostgreSQL
 
 At this point, Kubernetes has not appeared yet. This is simply the architecture of our application.
 
-# Containerizing the Application
+## Containerizing the Application
 
 In a real project, the frontend and backend are usually developed separately. They have different source code, dependencies, and runtime environments.
 
@@ -86,7 +88,7 @@ But another question now appears:
 
 This is where Kubernetes comes in.
 
-# Pod
+## Pod
 
 Kubernetes does not directly schedule individual containers. Instead, containers run inside **Pods**, which are the smallest deployable and schedulable units in Kubernetes.
 
@@ -170,7 +172,7 @@ This is where **Services** will become important.
 
 But first, we need to decide how Kubernetes should manage these Pods.
 
-# Deployment and StatefulSet
+## Deployment and StatefulSet
 
 Normally, we do not manually create and manage multiple identical Pods.
 
@@ -192,7 +194,7 @@ However, not all applications have the same requirements.
 
 In our example, the backend and database have very different characteristics.
 
-## Deployment
+### Deployment
 
 Our Backend API is mostly stateless.
 
@@ -232,7 +234,7 @@ Backend Deployment
 Backend Pods
 ```
 
-## StatefulSet
+### StatefulSet
 
 The database is different because it is stateful.
 
@@ -275,7 +277,7 @@ StatefulSet
   and persistent storage
 ```
 
-# Service
+## Service
 
 Now suppose our Backend Deployment has three Pods:
 
@@ -349,7 +351,7 @@ frontend-service
 Frontend Pods
 ```
 
-## Service Types
+### Service Types
 
 There are different Service types depending on how the application needs to be accessed.
 
@@ -374,8 +376,7 @@ An important point is that the Frontend Service can **also be a ClusterIP Servic
 
 We do not necessarily need to expose every application directly through NodePort or LoadBalancer.
 
-
-# Ingress
+## Ingress
 
 Now we have most of our internal architecture:
 
@@ -465,8 +466,7 @@ Ingress answers:
 
 > **Now that the HTTP request has reached the cluster, which Service should handle it?**
 
-
-# Putting Everything Together
+## Putting Everything Together
 
 Now the complete application can be understood like this:
 
@@ -530,7 +530,7 @@ PostgreSQL
 Persistent Storage
 ```
 
-# What problem does each technology solve?
+## What problem does each technology solve?
 
 After going through this example, I can understand the responsibilities more clearly:
 

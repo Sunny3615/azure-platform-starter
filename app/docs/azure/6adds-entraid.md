@@ -1,6 +1,6 @@
 # Active Directory vs Microsoft Entra ID
 
-# What confused me
+## What confused me
 
 When I first started learning Microsoft Entra ID, I couldn't understand why Active Directory (AD DS) still existed.
 
@@ -15,9 +15,9 @@ After learning more about enterprise identity management, I realized that Active
 
 ---
 
-# What I learned
+## What I learned
 
-## What is Active Directory Domain Services (AD DS)?
+### What is Active Directory Domain Services (AD DS)?
 
 Active Directory Domain Services (AD DS) is Microsoft's on-premises directory service.
 
@@ -35,7 +35,7 @@ Traditionally, employees logged into their Windows computers using Active Direct
 
 ---
 
-## What is Microsoft Entra ID?
+### What is Microsoft Entra ID?
 
 Microsoft Entra ID is Microsoft's cloud-based Identity and Access Management (IAM) service.
 
@@ -52,7 +52,7 @@ Unlike AD DS, Entra ID is designed for cloud environments.
 
 ---
 
-# A New Employee Example
+## A New Employee Example
 
 Suppose Bob joins a traditional company ABC today.
 
@@ -68,11 +68,11 @@ Let's see how Active Directory and Microsoft Entra ID work together.
 
 ---
 
-## Step 1 — Create Bob's account
+### Step 1 — Create Bob's account
 
 In many traditional companies such as ABC, Bob's account is first created in Active Directory.
 
-```
+```text
 Active Directory
 
 Users
@@ -81,7 +81,7 @@ Users
 
 Many companies then synchronize this account to Microsoft Entra ID using Azure AD Connect or Cloud Sync.
 
-```
+```text
 Active Directory
         │
         ▼
@@ -95,15 +95,15 @@ As a result, Bob has one company identity that exists both on-premises and in th
 
 ---
 
-## Step 2 — Bob logs into his computer
+### Step 2 — Bob logs into his computer
 
 There are two common scenarios.
 
-### Traditional Domain-Joined Computer
+#### Traditional Domain-Joined Computer
 
 If Bob's laptop is joined to the company's Windows domain,
 
-```
+```text
 Bob
     │
     ▼
@@ -117,11 +117,11 @@ Active Directory authenticates Bob.
 
 ---
 
-### Microsoft Entra ID Joined Computer
+#### Microsoft Entra ID Joined Computer
 
 If the company uses modern cloud management,
 
-```
+```text
 Bob
     │
     ▼
@@ -135,11 +135,11 @@ Microsoft Entra ID authenticates Bob instead.
 
 ---
 
-## Step 3 — Bob opens Microsoft Teams
+### Step 3 — Bob opens Microsoft Teams
 
 When Bob opens Teams,
 
-```
+```text
 Teams
     │
     ▼
@@ -153,11 +153,11 @@ Teams trusts Microsoft Entra ID to verify Bob's identity.
 
 ---
 
-## Step 4 — Bob opens Outlook
+### Step 4 — Bob opens Outlook
 
 The process is almost the same.
 
-```
+```text
 Outlook
     │
     ▼
@@ -169,11 +169,11 @@ Authentication
 
 ---
 
-## Step 5 — Bob accesses Azure Portal
+### Step 5 — Bob accesses Azure Portal
 
 When Bob opens Azure Portal,
 
-```
+```text
 portal.azure.com
         │
         ▼
@@ -191,13 +191,13 @@ Azure RBAC then decides whether Bob is allowed to manage Azure resources.
 
 ---
 
-# Hybrid Identity
+## Hybrid Identity
 
 Many large enterprises do not replace Active Directory with Microsoft Entra ID.
 
 Instead, they use both.
 
-```
+```text
                 Active Directory
                (On-premises)
                       │
@@ -217,10 +217,10 @@ Employees only have one company account, but it can be used for both on-premises
 
 ---
 
-# Active Directory vs Microsoft Entra ID
+## Active Directory vs Microsoft Entra ID
 
 | Active Directory (AD DS) | Microsoft Entra ID |
-|---------------------------|--------------------|
+| --------------------------- | -------------------- |
 | On-premises | Cloud |
 | Windows domain login | Cloud authentication |
 | Group Policy | Microsoft 365 |
@@ -231,7 +231,7 @@ Employees only have one company account, but it can be used for both on-premises
 
 ---
 
-# My Understanding
+## My Understanding
 
 At first, I thought Microsoft Entra ID was simply the cloud version of Active Directory.
 
@@ -243,7 +243,7 @@ Microsoft Entra ID manages identities in the cloud and provides authentication f
 
 Many large enterprises use both together.
 
-```
+```text
                 Employee
                     │
          ┌──────────┴──────────┐

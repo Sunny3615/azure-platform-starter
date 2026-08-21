@@ -1,6 +1,8 @@
-# What confused me
+# Networking route table
 
-## Next Hop
+## What confused me
+
+### Next Hop
 
 Previously, I thought the next hop was the final destination. My question was:
 
@@ -13,8 +15,7 @@ In reality:
 - The routing table decides the next hop.
 - The packet is forwarded hop by hop until it reaches its final destination.
 
-
-## Example
+### Example
 
 VM:
 
@@ -67,11 +68,11 @@ The packet destination remains 8.8.8.8 throughout the entire journey.
 
 Each device only decides the next hop.
 
-# What I learned
+## What I learned
 
-## Azure Networking
+### Azure Networking
 
-### Route
+#### Route
 
 A route determines where network traffic should go.
 
@@ -86,10 +87,9 @@ Example:
 |------------|-----------|
 | 0.0.0.0/0 | Internet |
 
+#### Types of Azure Routes
 
-### Types of Azure Routes
-
-#### 1. System Routes
+##### 1. System Routes
 
 Automatically created by Azure.
 
@@ -102,8 +102,7 @@ Examples:
 
 Azure manages these routes automatically.
 
-
-#### 2. BGP Routes
+##### 2. BGP Routes
 
 BGP (Border Gateway Protocol) routes are commonly used for communication between:
 
@@ -115,8 +114,7 @@ Examples:
 - ExpressRoute
 - Site-to-Site VPN
 
-
-#### 3. User Defined Routes (UDR)
+##### 3. User Defined Routes (UDR)
 
 Custom routes created by users.
 
@@ -130,8 +128,7 @@ Example:
 |------------|-----------|
 | 0.0.0.0/0 | Firewall |
 
-
-## Network Virtual Appliance (NVA)
+### Network Virtual Appliance (NVA)
 
 NVA stands for Network Virtual Appliance.
 
@@ -144,8 +141,7 @@ Examples:
 
 NVAs are commonly deployed as virtual machines inside Azure.
 
-
-## Application Gateway
+### Application Gateway
 
 Azure Application Gateway is a Layer 7 load balancing service.
 
@@ -162,22 +158,21 @@ Typical use cases:
 - SSL termination
 - Web Application Firewall (WAF)
 
-
-## Network Watcher
+### Network Watcher
 
 Azure Network Watcher provides tools for:
 
-### Monitoring
+#### Monitoring
 
 - Network metrics
 - Logs
 
-### Diagnostics
+#### Diagnostics
 
 - Connection troubleshooting
 - Packet capture
 
-### Traffic Analysis
+#### Traffic Analysis
 
 - Traffic flow monitoring
 - Security analysis
@@ -189,21 +184,17 @@ Supported resources include:
 - Application Gateways
 - Load Balancers
 
-
-
-
-## Route Table vs Gateway vs Load Balancer
+### Route Table vs Gateway vs Load Balancer
 
 Today I summarized their responsibilities:
 
 | Component | Responsibility |
-|------------|---------------|
+| ------------ | --------------- |
 | Route Table | Where should traffic go? |
 | Gateway | How does traffic leave the network? |
 | Load Balancer | Which backend should receive the traffic? |
 
-
-### Simple Example
+#### Simple Example
 
 ```text
 Internet
@@ -217,7 +208,7 @@ Load Balancer
 Web01  Web02  Web03
 ```
 
-#### Load Balancer
+##### Load Balancer
 
 Determines:
 
@@ -225,7 +216,7 @@ Determines:
 Which web server receives the request?
 ```
 
-#### Route Table
+##### Route Table
 
 Determines:
 
@@ -239,7 +230,7 @@ Example:
 192.168.0.0/24 -> VPN Gateway
 ```
 
-#### Gateway
+##### Gateway
 
 Provides the actual connection path.
 
@@ -254,5 +245,3 @@ VPN Tunnel
    |
 On-Premises Datacenter
 ```
-
-

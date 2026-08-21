@@ -1,4 +1,6 @@
-# What confused me
+# Service types
+
+## What confused me
 
 I was confused about `port`, `targetPort`, and `nodePort` in a NodePort Service, so I reviewed the different Kubernetes Service types and made the following notes.
 
@@ -15,9 +17,9 @@ Why does a NodePort Service also have a ClusterIP?
 
 To understand this, I first reviewed the four common Kubernetes Service types.
 
-# What did I learn?
+## What did I learn?
 
-## Summary of the four Service types
+### Summary of the four Service types
 
 | Service Type     | Main Purpose                                          | Typical Traffic Direction                |
 | ---------------- | ----------------------------------------------------- | ---------------------------------------- |
@@ -26,10 +28,9 @@ To understand this, I first reviewed the four common Kubernetes Service types.
 | **LoadBalancer** | Expose a Service through an external load balancer    | External → Load Balancer → Service → Pod |
 | **ExternalName** | Map a Kubernetes Service name to an external DNS name | Pod → External Service                   |
 
+## ClusterIP
 
-# ClusterIP
-
-## Definition
+### Definition
 
 A ClusterIP is a virtual IP address used to access a Service from within the Kubernetes cluster.
 
@@ -82,7 +83,7 @@ Pod A  Pod B  Pod C
 
 Other applications can access the Service through its stable ClusterIP or, more commonly, through its DNS name.
 
-## Use case
+### Use case
 
 ClusterIP is the default Service type.
 
@@ -104,9 +105,9 @@ The backend application does not necessarily need to be directly exposed outside
 
 ---
 
-# NodePort
+## NodePort
 
-## Definition
+### Definition
 
 NodePort exposes a Service on a static port on every Kubernetes Node.
 
@@ -124,7 +125,7 @@ By default, Kubernetes allocates NodePorts from the range:
 30000-32767
 ```
 
-## Use case
+### Use case
 
 Imagine that there is a computer outside your Kubernetes cluster and you want it to access an application running inside the cluster.
 
@@ -162,7 +163,7 @@ For example:
 
 assuming those Node IPs are reachable from the client.
 
-## port vs targetPort vs nodePort
+### port vs targetPort vs nodePort
 
 This was the part that confused me the most.
 
@@ -204,7 +205,7 @@ port       → Service
 targetPort → Pod / application
 ```
 
-## What exactly does the client access?
+### What exactly does the client access?
 
 With a ClusterIP Service, a client inside the cluster can access:
 
@@ -236,7 +237,7 @@ Backend Pod
 
 This is one of the major differences between ClusterIP and NodePort.
 
-## What if the Pod is not running on the Node that receives the traffic?
+### What if the Pod is not running on the Node that receives the traffic?
 
 For example:
 
@@ -287,8 +288,7 @@ Therefore:
 
 > The Node that receives NodePort traffic does not necessarily have to be the Node running the destination Pod.
 
-
-## Why does NodePort also have a ClusterIP?
+### Why does NodePort also have a ClusterIP?
 
 This was another thing that initially confused me.
 
@@ -334,9 +334,9 @@ ClusterIP
 NodePort adds external access through NodeIP:NodePort
 ```
 
-# LoadBalancer
+## LoadBalancer
 
-## Definition
+### Definition
 
 A LoadBalancer Service exposes an application outside the Kubernetes cluster through an external load balancer.
 
@@ -389,7 +389,7 @@ Kubernetes Service
 Pod:8080
 ```
 
-## Why use LoadBalancer instead of NodePort?
+### Why use LoadBalancer instead of NodePort?
 
 With NodePort, the client needs to know a reachable Node IP:
 
@@ -419,13 +419,13 @@ External Load Balancer
 Kubernetes
 ```
 
-## Use case
+### Use case
 
 LoadBalancer is commonly used when an application needs to be directly accessible from outside the Kubernetes cluster, especially in cloud environments.
 
-# ExternalName
+## ExternalName
 
-## Definition
+### Definition
 
 ExternalName is different from ClusterIP, NodePort, and LoadBalancer.
 
@@ -478,11 +478,11 @@ External Database
 
 Unlike the other Service types, an ExternalName Service does not proxy traffic to a set of Pods. It works through DNS, typically by returning a CNAME record for the configured external name.
 
-## Use case
+### Use case
 
 ExternalName is useful when applications inside Kubernetes need to access an external service while using a Kubernetes-style Service name.
 
-# Summary
+## Summary
 
 The easiest way for me to remember the four Service types is:
 

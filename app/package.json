@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:md": "markdownlint \"docs/**/*.md\""
+    "lint:md": "markdownlint \"docs/**/*.md\"",
+    "lint:md:fix": "markdownlint \"docs/**/*.md\" --fix"
   },
   "keywords": [],
   "author": "",

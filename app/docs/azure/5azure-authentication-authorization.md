@@ -1,4 +1,4 @@
-# What confused me
+# Understanding Authentication and Authorization in Azure
 
 When I first learned Microsoft Entra ID, I was confused about the relationship between these concepts:
 
@@ -13,9 +13,9 @@ I wondered:
 > Are security groups responsible for authorization?
 > Where does Azure RBAC fit into the whole process?
 
-# What I learned
+## What I learned
 
-## What is authentication
+### What is authentication
 
 Authentication verifies a user's identity.
 
@@ -23,26 +23,29 @@ It answers the question:
 
 > Who are you?
 
-## What is entra ID?
+### What is entra ID?
+
 Microsoft Entra ID is Microsoft's cloud identity and access management (IAM) service.
 
 It is responsible for authenticating users and managing identities.
 
-## What is authorization
+### What is authorization
+
 Authorization determines what an authenticated user is allowed to do.
 
 It answers the question:
 
 > What are you allowed to do?
 
-## What is RBAC?
+### What is RBAC?
+
 Azure RBAC is responsible for assigning permissions to users or groups.
 
-## What is security groups?
+### What is security groups?
 
 A Security Group is an object in Microsoft Entra ID.
 
-```
+```text
 Microsoft Entra ID
 │
 ├── Users
@@ -61,11 +64,11 @@ Identity Management → Microsoft Entra ID Groups
 
 Authorization → Azure RBAC
 
-## Example
+### Example
 
 For example, Alice joins a new company as a DevOps Engineer. One of her responsibilities is managing a resource group in Azure.
 
-### Step 1 - create the user
+#### Step 1 - create the user
 
 The IT administrator first creates Alice's account in Microsoft Entra ID.
 
@@ -74,11 +77,11 @@ At this point:
 > she can sign in to Microsoft services
 > BUT, she still can't access any azure resources
 
-### Step 2 – Add Alice to a Security Group
+#### Step 2 – Add Alice to a Security Group
 
 Since Alice is a member of the DevOps team, the administrator adds her to the DevOps Security Group.
 
-```
+```text
 Microsoft Entra ID
 
 DevOps Security Group
@@ -87,13 +90,14 @@ DevOps Security Group
 └── Alice
 ```
 
-### Step 3 – Assign an Azure Role (One-time setup)
+#### Step 3 – Assign an Azure Role (One-time setup)
+>
 > This step is not necessary for Alice if the DevOps Security Group was already assigned the Contributor role when Bob or Charlie joined the company.
 > Once Alice is added to the DevOps Security Group, she automatically inherits the same permissions.
 
 Next, the administrator creates an Azure RBAC role assignment.
 
-```
+```text
 Resource Group: Production-RG
 Role: Contributor
 Assigned to: DevOps Security Group
@@ -103,8 +107,7 @@ Instead of assigning the Contributor role to Alice directly, the administrator a
 
 This makes permission management much easier because every new DevOps engineer only needs to be added to the group.
 
-
-### Step 4 – Alice signs in
+#### Step 4 – Alice signs in
 
 When Alice signs in to the Azure Portal:
 
@@ -113,7 +116,7 @@ When Alice signs in to the Azure Portal:
 3. Azure RBAC finds that the DevOps Security Group has the Contributor role on the resource group.
 4. Alice is granted permission to manage the resource group.
 
-```
+```text
 Step 1
 Create User
         │
@@ -139,7 +142,7 @@ Step 4
 Access Azure Resource
 ```
 
-# In summary
+## In summary
 
 Microsoft Entra ID is responsible for authentication and identity management.
 Security Groups are used to organize users.
