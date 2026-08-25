@@ -1,7 +1,11 @@
 name: cd
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - ci
+    types:
+      - completed
     branches:
       - main
 
@@ -11,6 +15,7 @@ permissions:
 
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +34,6 @@ jobs:
         with:
           app-name: app-doc-platform-80227
           package: app
+      
+      - name: Show website URL
+        run: "Website deployed successfully: https://app-doc-platform-80227.azurewebsites.net"

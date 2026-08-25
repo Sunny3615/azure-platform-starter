@@ -12,28 +12,28 @@ jobs:
         working-directory: app
 
     steps:
-      - name: checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: set up nodeJS
+      - name: Set up nodeJS
         uses: actions/setup-node@v4
         with:
           node-version: '24'
 
-      - name: install dependencies (clean install)
+      - name: Install dependencies (clean install)
         run: npm ci
       
-      - name: check syntax
+      - name: Check syntax
         run: node --check server.js
       
-      - name: run Markdown lint
+      - name: Run Markdown lint
         run: npm run lint:md
 
-      - name: package application
+      - name: Package application
         working-directory: app
         run: zip -r ../app.zip .
 
-      - name: upload application artifact
+      - name: Upload application artifact
         uses: actions/upload-artifact@v4
         with:
           name: application
