@@ -34,7 +34,7 @@ jobs:
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
-          app-name: app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
           package: app
       
       - name: Show website URL
