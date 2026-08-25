@@ -38,4 +38,5 @@ jobs:
           package: app
       
       - name: Show website URL
-        run: echo "Website deployed successfully https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
+        run: |
+          echo "Website deployed successfully https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
