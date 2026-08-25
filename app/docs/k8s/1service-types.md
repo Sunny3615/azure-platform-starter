@@ -10,7 +10,7 @@ One thing that confused me was that when we create a NodePort Service, it also h
 kubectl get svc
 
 NAME            TYPE       CLUSTER-IP     PORT(S)
-nginx-service   NodePort   10.96.0.10     81:30080/TCP
+nginx-service   NodePort   10.96.0.10     80:30080/TCP
 ```
 
 Why does a NodePort Service also have a ClusterIP?
@@ -146,7 +146,7 @@ spec:
     app: nginx
 
   ports:
-    - port: 81
+    - port: 80
       targetPort: 8080
       nodePort: 30080
 ```
@@ -170,7 +170,7 @@ This was the part that confused me the most.
 | Field              | Meaning                                                   |
 | ------------------ | --------------------------------------------------------- |
 | `nodePort: 30080`  | The port exposed on the Node                              |
-| `port: 81`         | The port exposed by the Service                           |
+| `port: 80`         | The port exposed by the Service                           |
 | `targetPort: 8080` | The port on which the application in the Pod is listening |
 
 Therefore, the traffic path can be understood as:
@@ -182,7 +182,7 @@ NodeIP:30080
       ↓
 NodePort Service
       ↓
-Service port:81
+Service port:80
       ↓
 PodIP:8080
 ```
@@ -192,7 +192,7 @@ For example:
 ```text
 192.168.1.11:30080
         ↓
-nginx-service:81
+nginx-service:80
         ↓
 10.10.1.10:8080
 ```
@@ -212,7 +212,7 @@ With a ClusterIP Service, a client inside the cluster can access:
 ```text
 Client Pod
     ↓
-10.96.0.10:81
+10.96.0.10:80
     ↓
 Service
     ↓
@@ -302,7 +302,7 @@ we may see:
 
 ```text
 NAME            TYPE       CLUSTER-IP     PORT(S)
-nginx-service   NodePort   10.96.0.10     81:30080/TCP
+nginx-service   NodePort   10.96.0.10     80:30080/TCP
 ```
 
 The Service has both:
@@ -317,7 +317,7 @@ This is because a NodePort Service normally also provides the ClusterIP function
 Therefore, the same Service can be accessed internally through:
 
 ```text
-10.96.0.10:81
+10.96.0.10:80
 ```
 
 and externally through a reachable Node:
@@ -357,7 +357,7 @@ spec:
     app: nginx
 
   ports:
-    - port: 81
+    - port: 80
       targetPort: 8080
 ```
 
@@ -380,7 +380,7 @@ For example:
 ```text
 Client
    ↓
-20.30.40.50:81
+20.30.40.50:80
    ↓
 Cloud Load Balancer
    ↓
