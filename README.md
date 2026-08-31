@@ -80,8 +80,18 @@ CD
     ↓
 Deploy to Azure App Service
 
-## Version 3
-Push image to Azure Container Registry
+## Version 3 - ongoing
 
-## Version 4
-Deploy to AKS with Helm
+Dockerize the application
+
+- Create a Dockerfile for the Node.js application
+- Create a `.dockerignore` file
+- Build and run the Docker image locally
+- Add Docker image build validation to the CI pipeline
+
+## Version 4 - future improvement
+
+Container-based deployment
+
+- Push the Docker image to Azure Container Registry (ACR)
+- Deploy the containerized application to Azure
