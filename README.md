@@ -28,7 +28,7 @@ Completed
 - Azure App Service deployment
 - Live Azure website
 
-## Version 2 - Ongoing
+## ✅ Version 2
 
 ### CI/CD with GitHub Actions
 
