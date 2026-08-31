@@ -30,7 +30,6 @@ jobs:
         run: npm run lint:md
 
       - name: Package application
-        working-directory: app
         run: zip -r ../app.zip .
 
       - name: Upload application artifact
@@ -38,3 +37,6 @@ jobs:
         with:
           name: application
           path: app.zip
+      
+      - name: Build the docker image
+        run: docker build -t azure-platform-starter .
