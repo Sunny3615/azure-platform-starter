@@ -80,7 +80,7 @@ CD
     ↓
 Deploy to Azure App Service
 
-## Version 3 - ongoing
+## ✅ Version 3 - ongoing
 
 Dockerize the application
 
